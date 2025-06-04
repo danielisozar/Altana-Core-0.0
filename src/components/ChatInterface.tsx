@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -46,7 +45,7 @@ const ChatInterface = () => {
       return {
         id: Date.now().toString(),
         type: 'bot',
-        content: `Here's what my predictive models show for the next 7 days:\n\n**Santos-São Paulo Route:** 18% delivery time increase expected\n**Why:** Port worker negotiations scheduled + anticipated 40% cargo volume spike from soybean exports\n\n**Callao-Lima Corridor:** Optimal performance maintained\n**Why:** Weather patterns stable, no port congestion, and our AI routing has optimized 23 alternative paths\n\n**Mexico City Routes:** 2-day weather delays likely Thu-Fri\n**Why:** Satellite data shows storm system moving from Pacific, historically causes 67% delivery delays\n\nI recommend rerouting 2,400 TEU through Paita port immediately. This will save you $340K in delay costs.`,
+        content: `Here's what my predictive models show for the next 7 days:\n\nSantos-São Paulo Route: 18% delivery time increase expected\nWhy: Port worker negotiations scheduled + anticipated 40% cargo volume spike from soybean exports\n\nCallao-Lima Corridor: Optimal performance maintained\nWhy: Weather patterns stable, no port congestion, and our AI routing has optimized 23 alternative paths\n\nMexico City Routes: 2-day weather delays likely Thu-Fri\nWhy: Satellite data shows storm system moving from Pacific, historically causes 67% delivery delays\n\nI recommend rerouting 2,400 TEU through Paita port immediately. This will save you $340K in delay costs.`,
         timestamp: new Date(),
         insights: {
           type: 'prediction',
@@ -60,7 +59,7 @@ const ChatInterface = () => {
       return {
         id: Date.now().toString(),
         type: 'bot',
-        content: `I've identified $284K in monthly savings opportunities:\n\n**Fuel Optimization: $127K savings (12% reduction)**\n**Why:** My analysis found 47 routes where you're using premium corridors during peak hours unnecessarily. Off-peak routing reduces fuel costs by 23%.\n\n**Route Consolidation: $89K savings**\n**Why:** 23 of your current routes have <60% capacity utilization. Consolidating these increases efficiency to 87% while maintaining delivery windows.\n\n**Modal Shift to Rail: $68K savings**\n**Why:** 15% of your São Paulo-Rio cargo can move to rail at 34% lower cost. Rail reliability is currently 96% vs truck's 89%.\n\nImplementing these changes takes 2 weeks. I can create the transition plan now.`,
+        content: `I've identified $284K in monthly savings opportunities:\n\nFuel Optimization: $127K savings (12% reduction)\nWhy: My analysis found 47 routes where you're using premium corridors during peak hours unnecessarily. Off-peak routing reduces fuel costs by 23%.\n\nRoute Consolidation: $89K savings\nWhy: 23 of your current routes have <60% capacity utilization. Consolidating these increases efficiency to 87% while maintaining delivery windows.\n\nModal Shift to Rail: $68K savings\nWhy: 15% of your São Paulo-Rio cargo can move to rail at 34% lower cost. Rail reliability is currently 96% vs truck's 89%.\n\nImplementing these changes takes 2 weeks. I can create the transition plan now.`,
         timestamp: new Date(),
         insights: {
           type: 'optimization',
@@ -74,7 +73,7 @@ const ChatInterface = () => {
       return {
         id: Date.now().toString(),
         type: 'bot',
-        content: `Critical situation analysis - here's what needs immediate attention:\n\n🔴 **Callao Port Congestion: URGENT**\n**Impact:** 4-6 hour delays, affecting $2.3M in cargo\n**Why:** Docker strike negotiations broke down 2 hours ago. My port sensors show 67 ships queued.\n**Action:** Reroute to Paita immediately. I've already identified 12 available slots.\n\n🔴 **São Paulo Strike: 48H Impact**\n**Impact:** $890K daily throughput at risk\n**Why:** Labor union rejected wage proposal. Strike 89% likely to proceed.\n**Action:** Pre-position inventory at secondary hubs. I've mapped 6 alternative distribution points.\n\n🟡 **Mexico Fuel Surge: 7% Cost Increase**\n**Why:** Refinery maintenance + peso devaluation driving prices up\n**Action:** Lock fuel contracts now through our preferred suppliers.\n\nExecuting these countermeasures will minimize disruption to <2% of operations.`,
+        content: `Critical situation analysis - here's what needs immediate attention:\n\n🔴 Callao Port Congestion: URGENT\nImpact: 4-6 hour delays, affecting $2.3M in cargo\nWhy: Docker strike negotiations broke down 2 hours ago. My port sensors show 67 ships queued.\nAction: Reroute to Paita immediately. I've already identified 12 available slots.\n\n🔴 São Paulo Strike: 48H Impact\nImpact: $890K daily throughput at risk\nWhy: Labor union rejected wage proposal. Strike 89% likely to proceed.\nAction: Pre-position inventory at secondary hubs. I've mapped 6 alternative distribution points.\n\n🟡 Mexico Fuel Surge: 7% Cost Increase\nWhy: Refinery maintenance + peso devaluation driving prices up\nAction: Lock fuel contracts now through our preferred suppliers.\n\nExecuting these countermeasures will minimize disruption to <2% of operations.`,
         timestamp: new Date(),
         insights: {
           type: 'alert',
@@ -88,7 +87,7 @@ const ChatInterface = () => {
       return {
         id: Date.now().toString(),
         type: 'bot',
-        content: `Route optimization complete - here are your best options:\n\n**Option 1: Speed Priority (4.2h delivery)**\nSantos → BR-116 → São Paulo\n**Why:** Fastest but 15% higher fuel cost. Use for high-priority shipments only.\n\n**Option 2: Cost Priority (4.8h delivery)**\nSantos → SP-160 → BR-381 → São Paulo\n**Why:** 23% fuel savings, avoids toll stations, minimal traffic impact\n\n**Option 3: RECOMMENDED (4.5h delivery)**\nHybrid route avoiding BR-116 accident at km 45\n**Why:** Balances speed and cost. Real-time traffic data shows 15-minute savings vs normal routing.\n\nBased on current conditions, I'm routing your next 12 shipments via Option 3. This saves $2,340 today while maintaining delivery commitments.`,
+        content: `Route optimization complete - here are your best options:\n\nOption 1: Speed Priority (4.2h delivery)\nSantos → BR-116 → São Paulo\nWhy: Fastest but 15% higher fuel cost. Use for high-priority shipments only.\n\nOption 2: Cost Priority (4.8h delivery)\nSantos → SP-160 → BR-381 → São Paulo\nWhy: 23% fuel savings, avoids toll stations, minimal traffic impact\n\nOption 3: RECOMMENDED (4.5h delivery)\nHybrid route avoiding BR-116 accident at km 45\nWhy: Balances speed and cost. Real-time traffic data shows 15-minute savings vs normal routing.\n\nBased on current conditions, I'm routing your next 12 shipments via Option 3. This saves $2,340 today while maintaining delivery commitments.`,
         timestamp: new Date(),
         insights: {
           type: 'analysis',
@@ -102,7 +101,7 @@ const ChatInterface = () => {
       return {
         id: Date.now().toString(),
         type: 'bot',
-        content: `Your logistics performance is strong, but here's where we can excel:\n\n**Current Performance:**\n• On-time delivery: 96.8% (Industry avg: 89%)\n• Cost per km: $0.84 (15% below regional average)\n• Capacity utilization: 87% (Target: 90%)\n\n**Why you're outperforming:**\n• My predictive routing reduces delays by 34%\n• Dynamic load optimization increases efficiency\n• Real-time weather integration prevents 67% of weather delays\n\n**Opportunities to reach 99% excellence:**\n• Implement my micro-scheduling recommendations (+2.1% on-time)\n• Use predictive maintenance alerts (+1.8% uptime)\n• Optimize last-mile with AI clustering (+0.3% efficiency)\n\nThese improvements will position you in the top 1% of LatAm logistics operators.`,
+        content: `Your logistics performance is strong, but here's where we can excel:\n\nCurrent Performance:\n• On-time delivery: 96.8% (Industry avg: 89%)\n• Cost per km: $0.84 (15% below regional average)\n• Capacity utilization: 87% (Target: 90%)\n\nWhy you're outperforming:\n• My predictive routing reduces delays by 34%\n• Dynamic load optimization increases efficiency\n• Real-time weather integration prevents 67% of weather delays\n\nOpportunities to reach 99% excellence:\n• Implement my micro-scheduling recommendations (+2.1% on-time)\n• Use predictive maintenance alerts (+1.8% uptime)\n• Optimize last-mile with AI clustering (+0.3% efficiency)\n\nThese improvements will position you in the top 1% of LatAm logistics operators.`,
         timestamp: new Date(),
         insights: {
           type: 'analysis',
@@ -115,7 +114,7 @@ const ChatInterface = () => {
     return {
       id: Date.now().toString(),
       type: 'bot',
-      content: `I understand you're asking about "${userMessage}". As your LatAm logistics intelligence specialist, I can provide expert analysis on:\n\n**Predictive Analytics**\n• Delivery time forecasts with 94% accuracy\n• Demand prediction up to 30 days ahead\n• Risk assessment for routes and suppliers\n\n**Cost Intelligence**\n• Real-time optimization opportunities\n• Fuel and route cost analysis\n• ROI projections for logistics investments\n\n**Operational Excellence**\n• Live performance monitoring\n• Competitive benchmarking\n• Strategic recommendations\n\nWhat specific logistics challenge should I analyze for you? I have access to real-time data across all major LatAm trade corridors.`,
+      content: `I understand you're asking about "${userMessage}". As your LatAm logistics intelligence specialist, I can provide expert analysis on:\n\nPredictive Analytics\n• Delivery time forecasts with 94% accuracy\n• Demand prediction up to 30 days ahead\n• Risk assessment for routes and suppliers\n\nCost Intelligence\n• Real-time optimization opportunities\n• Fuel and route cost analysis\n• ROI projections for logistics investments\n\nOperational Excellence\n• Live performance monitoring\n• Competitive benchmarking\n• Strategic recommendations\n\nWhat specific logistics challenge should I analyze for you? I have access to real-time data across all major LatAm trade corridors.`,
       timestamp: new Date(),
     };
   };
