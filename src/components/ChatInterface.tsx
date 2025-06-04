@@ -150,36 +150,45 @@ const ChatInterface = () => {
 
   const suggestedQuestions = [
     "Predict delivery delays for next week",
-    "Show me the biggest cost savings opportunities", 
-    "What critical alerts need attention now?",
-    "Optimize my Brazil-Argentina routes"
+    "Show me cost optimization opportunities", 
+    "What alerts need attention now?",
+    "Optimize my Brazil routes"
   ];
 
   return (
-    <div className="flex flex-col h-full">
-      {/* Chat Messages - with padding at bottom for fixed input */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-4 pb-32">
+    <div className="flex flex-col h-full bg-gradient-to-b from-white to-slate-50/50">
+      {/* Chat Messages */}
+      <div className="flex-1 overflow-y-auto p-6 space-y-6 pb-32">
         {messages.map((message) => (
           <div
             key={message.id}
             className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
           >
-            <div className={`flex max-w-[85%] ${message.type === 'user' ? 'flex-row-reverse' : 'flex-row'} items-start space-x-3`}>
-              <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
-                message.type === 'user' ? 'bg-primary text-primary-foreground' : 'bg-accent text-accent-foreground'
-              }`}>
-                {message.type === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
-              </div>
-              <div className={`rounded-2xl p-4 ${
+            <div className={`flex max-w-[80%] ${message.type === 'user' ? 'flex-row-reverse' : 'flex-row'} items-start space-x-4`}>
+              <div className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center ${
                 message.type === 'user' 
-                  ? 'bg-primary text-primary-foreground' 
-                  : 'bg-card border border-border'
+                  ? 'bg-gradient-to-br from-indigo-500 to-purple-600' 
+                  : 'bg-gradient-to-br from-slate-100 to-slate-200'
               }`}>
-                <div className="whitespace-pre-wrap text-sm leading-relaxed">{message.content}</div>
+                {message.type === 'user' ? 
+                  <User className="w-5 h-5 text-white" /> : 
+                  <Bot className="w-5 h-5 text-slate-600" />
+                }
+              </div>
+              <div className={`rounded-2xl p-5 ${
+                message.type === 'user' 
+                  ? 'bg-gradient-to-br from-indigo-500 to-purple-600 text-white' 
+                  : 'bg-white minimal-shadow border border-slate-200/50'
+              }`}>
+                <div className={`text-sm leading-relaxed whitespace-pre-wrap ${
+                  message.type === 'user' ? 'text-white' : 'text-slate-700'
+                }`}>
+                  {message.content}
+                </div>
                 {message.insights && (
-                  <div className="mt-3 pt-3 border-t border-border/30">
-                    <div className="flex items-start space-x-2">
-                      <Badge variant="secondary" className="text-xs">
+                  <div className="mt-4 pt-4 border-t border-white/20">
+                    <div className="flex items-start space-x-2 mb-2">
+                      <Badge variant="secondary" className="text-xs bg-white/10 text-white border-white/20">
                         {message.insights.type === 'prediction' && <TrendingUp className="w-3 h-3 mr-1" />}
                         {message.insights.type === 'alert' && <AlertTriangle className="w-3 h-3 mr-1" />}
                         {message.insights.type === 'optimization' && <Package className="w-3 h-3 mr-1" />}
@@ -187,20 +196,22 @@ const ChatInterface = () => {
                         {message.insights.type}
                       </Badge>
                       {message.insights.data?.confidence && (
-                        <span className="text-xs text-muted-foreground">
+                        <span className="text-xs text-white/70">
                           {message.insights.data.confidence}% confidence
                         </span>
                       )}
                     </div>
                     {message.insights.reasoning && (
-                      <div className="mt-2 flex items-start space-x-2">
-                        <Lightbulb className="w-3 h-3 text-primary mt-0.5 flex-shrink-0" />
-                        <span className="text-xs text-muted-foreground">{message.insights.reasoning}</span>
+                      <div className="flex items-start space-x-2">
+                        <Lightbulb className="w-3 h-3 text-amber-300 mt-0.5 flex-shrink-0" />
+                        <span className="text-xs text-white/80">{message.insights.reasoning}</span>
                       </div>
                     )}
                   </div>
                 )}
-                <div className="text-xs text-muted-foreground mt-2">
+                <div className={`text-xs mt-3 ${
+                  message.type === 'user' ? 'text-white/60' : 'text-slate-400'
+                }`}>
                   {message.timestamp.toLocaleTimeString()}
                 </div>
               </div>
@@ -210,15 +221,15 @@ const ChatInterface = () => {
         
         {isTyping && (
           <div className="flex justify-start">
-            <div className="flex items-start space-x-3">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center">
-                <Bot className="w-4 h-4" />
+            <div className="flex items-start space-x-4">
+              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
+                <Bot className="w-5 h-5 text-slate-600" />
               </div>
-              <div className="bg-card border border-border rounded-2xl p-4">
+              <div className="bg-white minimal-shadow border border-slate-200/50 rounded-2xl p-5">
                 <div className="flex space-x-1">
-                  <div className="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
-                  <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                  <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                  <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                  <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                 </div>
               </div>
             </div>
@@ -227,19 +238,19 @@ const ChatInterface = () => {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Fixed Input Area at Bottom */}
-      <div className="fixed bottom-0 right-0 left-80 bg-background border-t border-border">
-        {/* Suggested Questions - only show for first interaction */}
+      {/* Fixed Input Area */}
+      <div className="fixed bottom-0 right-0 left-80 glass-effect border-t border-border/50">
+        {/* Suggested Questions */}
         {messages.length <= 1 && (
           <div className="px-6 py-4">
-            <div className="text-sm text-muted-foreground mb-3">Ask me anything about your logistics:</div>
+            <div className="text-sm text-slate-500 mb-3 font-medium">Try asking:</div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
               {suggestedQuestions.map((question, index) => (
                 <Button
                   key={index}
                   variant="outline"
                   size="sm"
-                  className="text-left justify-start h-auto py-2 px-3 text-xs"
+                  className="text-left justify-start h-auto py-3 px-4 text-xs border-slate-200 hover:bg-slate-50 text-slate-600"
                   onClick={() => setInputValue(question)}
                 >
                   {question}
@@ -256,15 +267,15 @@ const ChatInterface = () => {
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder="Ask about predictions, optimizations, costs, routes, alerts..."
-              className="flex-1 min-h-[60px] max-h-[120px] resize-none"
+              placeholder="Ask about predictions, costs, routes..."
+              className="flex-1 min-h-[50px] max-h-[120px] resize-none border-slate-200 bg-white/80 text-slate-700 placeholder:text-slate-400"
               disabled={isTyping}
             />
             <Button 
               onClick={handleSendMessage} 
               disabled={!inputValue.trim() || isTyping}
               size="icon"
-              className="self-end"
+              className="self-end bg-gradient-to-br from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 border-0"
             >
               <Send className="w-4 h-4" />
             </Button>
