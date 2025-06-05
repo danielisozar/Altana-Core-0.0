@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -45,12 +46,23 @@ const ChatInterface = () => {
       return {
         id: Date.now().toString(),
         type: 'bot',
-        content: `Here's what my predictive models show for the next 7 days:\n\nSantos-São Paulo Route: 18% delivery time increase expected\nWhy: Port worker negotiations scheduled + anticipated 40% cargo volume spike from soybean exports\n\nCallao-Lima Corridor: Optimal performance maintained\nWhy: Weather patterns stable, no port congestion, and our AI routing has optimized 23 alternative paths\n\nMexico City Routes: 2-day weather delays likely Thu-Fri\nWhy: Satellite data shows storm system moving from Pacific, historically causes 67% delivery delays\n\nI recommend rerouting 2,400 TEU through Paita port immediately. This will save you $340K in delay costs.`,
+        content: `NEXT 7 DAYS FORECAST - Critical decisions needed now:
+
+OPTION 1: Santos-São Paulo (AVOID) - 18% delays incoming
+Port worker negotiations + 40% cargo spike = guaranteed bottlenecks. My models show 67% probability of 4+ hour delays.
+
+OPTION 2: Callao-Lima (OPTIMAL CHOICE) - Perfect storm of efficiency
+Zero congestion, stable weather patterns, 23 optimized backup routes ready. This is your golden window.
+
+OPTION 3: Paita Alternative (SMART HEDGE) - Insurance play
+2,400 TEU capacity available immediately. Costs 8% more but saves you $340K in delay penalties.
+
+MY RECOMMENDATION: Execute Paita reroute TODAY. Santos will cost you more than the premium you'll pay for Paita. Weather data confirms this is the right move - act within 6 hours for best positioning.`,
         timestamp: new Date(),
         insights: {
           type: 'prediction',
           data: { confidence: 94, timeframe: '7 days' },
-          reasoning: 'Based on 15 data sources including weather satellites, port APIs, and historical patterns'
+          reasoning: 'Based on 15 real-time data sources: weather satellites, port APIs, labor negotiations tracker, and 180-day historical analysis'
         }
       };
     }
@@ -59,12 +71,23 @@ const ChatInterface = () => {
       return {
         id: Date.now().toString(),
         type: 'bot',
-        content: `I've identified $284K in monthly savings opportunities:\n\nFuel Optimization: $127K savings (12% reduction)\nWhy: My analysis found 47 routes where you're using premium corridors during peak hours unnecessarily. Off-peak routing reduces fuel costs by 23%.\n\nRoute Consolidation: $89K savings\nWhy: 23 of your current routes have <60% capacity utilization. Consolidating these increases efficiency to 87% while maintaining delivery windows.\n\nModal Shift to Rail: $68K savings\nWhy: 15% of your São Paulo-Rio cargo can move to rail at 34% lower cost. Rail reliability is currently 96% vs truck's 89%.\n\nImplementing these changes takes 2 weeks. I can create the transition plan now.`,
+        content: `$284K MONTHLY SAVINGS IDENTIFIED - Here's your action plan:
+
+OPTION 1: Off-Peak Routing (EXECUTE FIRST) - $127K immediate impact
+47 routes running premium hours unnecessarily. Shifting to off-peak saves 23% on fuel costs. Zero service disruption, pure profit.
+
+OPTION 2: Route Consolidation (MEDIUM PRIORITY) - $89K monthly
+23 routes under 60% capacity. My algorithms have mapped the perfect consolidation strategy to hit 87% efficiency while maintaining delivery windows.
+
+OPTION 3: Rail Integration (LONG-TERM WIN) - $68K ongoing
+São Paulo-Rio cargo shifts to rail at 34% lower cost. Rail reliability actually beats trucks right now: 96% vs 89%.
+
+MY RECOMMENDATION: Start with Option 1 immediately - it's risk-free money. Implement Option 2 within 2 weeks. Option 3 needs 6-week transition but delivers permanent savings. Total implementation timeline: 8 weeks to full optimization.`,
         timestamp: new Date(),
         insights: {
           type: 'optimization',
           data: { savings: 284000, confidence: 91 },
-          reasoning: 'Analysis of 180 days of operational data across 1,247 active routes'
+          reasoning: 'Analysis of 180 days operational data across 1,247 active routes, verified against industry benchmarks'
         }
       };
     }
@@ -73,12 +96,23 @@ const ChatInterface = () => {
       return {
         id: Date.now().toString(),
         type: 'bot',
-        content: `Critical situation analysis - here's what needs immediate attention:\n\n🔴 Callao Port Congestion: URGENT\nImpact: 4-6 hour delays, affecting $2.3M in cargo\nWhy: Docker strike negotiations broke down 2 hours ago. My port sensors show 67 ships queued.\nAction: Reroute to Paita immediately. I've already identified 12 available slots.\n\n🔴 São Paulo Strike: 48H Impact\nImpact: $890K daily throughput at risk\nWhy: Labor union rejected wage proposal. Strike 89% likely to proceed.\nAction: Pre-position inventory at secondary hubs. I've mapped 6 alternative distribution points.\n\n🟡 Mexico Fuel Surge: 7% Cost Increase\nWhy: Refinery maintenance + peso devaluation driving prices up\nAction: Lock fuel contracts now through our preferred suppliers.\n\nExecuting these countermeasures will minimize disruption to <2% of operations.`,
+        content: `CRISIS RESPONSE ACTIVATED - 3 critical situations demand immediate action:
+
+OPTION 1: Callao Emergency Reroute (DO THIS NOW) - $2.3M cargo at risk
+Docker strike confirmed 2 hours ago. 67 ships queued, 4-6 hour delays spreading. I've secured 12 Paita slots - claim them in the next hour before competitors move.
+
+OPTION 2: São Paulo Strike Defense (48H WINDOW) - $890K daily exposure
+89% probability strike proceeds tomorrow. Pre-position inventory at 6 secondary hubs I've mapped. This buys you 72 hours to negotiate or reroute.
+
+OPTION 3: Mexico Fuel Lock (PROFIT OPPORTUNITY) - 7% cost increase coming
+Peso devaluation + refinery maintenance = fuel spike inevitable. Lock contracts now through our preferred suppliers before market catches up.
+
+MY RECOMMENDATION: Execute ALL three simultaneously. Callao reroute is non-negotiable. São Paulo prep takes 4 hours. Mexico fuel locks need 24 hours. This aggressive response limits total impact to under 2% of operations while competitors face 15-20% disruption.`,
         timestamp: new Date(),
         insights: {
           type: 'alert',
           data: { criticalAlerts: 2, warnings: 1 },
-          reasoning: 'Real-time monitoring of 847 data points across LatAm logistics network'
+          reasoning: 'Real-time monitoring of 847 data points: port sensors, labor negotiations, currency markets, weather systems'
         }
       };
     }
@@ -87,12 +121,23 @@ const ChatInterface = () => {
       return {
         id: Date.now().toString(),
         type: 'bot',
-        content: `Route optimization complete - here are your best options:\n\nOption 1: Speed Priority (4.2h delivery)\nSantos → BR-116 → São Paulo\nWhy: Fastest but 15% higher fuel cost. Use for high-priority shipments only.\n\nOption 2: Cost Priority (4.8h delivery)\nSantos → SP-160 → BR-381 → São Paulo\nWhy: 23% fuel savings, avoids toll stations, minimal traffic impact\n\nOption 3: RECOMMENDED (4.5h delivery)\nHybrid route avoiding BR-116 accident at km 45\nWhy: Balances speed and cost. Real-time traffic data shows 15-minute savings vs normal routing.\n\nBased on current conditions, I'm routing your next 12 shipments via Option 3. This saves $2,340 today while maintaining delivery commitments.`,
+        content: `ROUTE OPTIMIZATION COMPLETE - 3 strategic options analyzed:
+
+OPTION 1: Speed Priority (4.2h) - Use for premium clients only
+Santos → BR-116 → São Paulo. Fastest route but 15% fuel premium. Reserve this for high-margin, time-critical shipments.
+
+OPTION 2: Cost Priority (4.8h) - Maximum efficiency play  
+Santos → SP-160 → BR-381 → São Paulo. 23% fuel savings, zero tolls, predictable timing. Perfect for bulk standard deliveries.
+
+OPTION 3: Hybrid Smart Route (4.5h) - THE WINNER
+Dynamic routing avoiding BR-116 accident at km 45. Balances speed and cost while adapting to real-time conditions. This is your new standard.
+
+MY RECOMMENDATION: Implement Option 3 as default for all operations. I'm already routing your next 12 shipments this way, saving $2,340 today. Options 1 and 2 become tactical choices for specific client needs. This strategy positions you 15% ahead of competition in both cost and reliability.`,
         timestamp: new Date(),
         insights: {
           type: 'analysis',
           data: { routeOptions: 3, timeSaved: '1.5h' },
-          reasoning: 'Live traffic analysis from 340 sensors + weather and road condition APIs'
+          reasoning: 'Live analysis from 340 traffic sensors, weather APIs, road condition monitors, and fuel price tracking'
         }
       };
     }
@@ -101,12 +146,25 @@ const ChatInterface = () => {
       return {
         id: Date.now().toString(),
         type: 'bot',
-        content: `Your logistics performance is strong, but here's where we can excel:\n\nCurrent Performance:\n• On-time delivery: 96.8% (Industry avg: 89%)\n• Cost per km: $0.84 (15% below regional average)\n• Capacity utilization: 87% (Target: 90%)\n\nWhy you're outperforming:\n• My predictive routing reduces delays by 34%\n• Dynamic load optimization increases efficiency\n• Real-time weather integration prevents 67% of weather delays\n\nOpportunities to reach 99% excellence:\n• Implement my micro-scheduling recommendations (+2.1% on-time)\n• Use predictive maintenance alerts (+1.8% uptime)\n• Optimize last-mile with AI clustering (+0.3% efficiency)\n\nThese improvements will position you in the top 1% of LatAm logistics operators.`,
+        content: `PERFORMANCE ANALYSIS - You're outperforming 89% of LatAm operators. Here's how to dominate the top 1%:
+
+CURRENT STATUS: 96.8% on-time delivery (Industry: 89%) | $0.84/km cost (15% below average) | 87% capacity utilization
+
+OPTION 1: Micro-Scheduling Implementation (+2.1% performance) - 2 weeks to deploy
+Predictive scheduling adjustments based on traffic patterns, weather, and historical data. Guaranteed improvement to 99% on-time delivery.
+
+OPTION 2: Predictive Maintenance Program (+1.8% uptime) - 4 weeks full rollout
+AI-driven maintenance alerts prevent 92% of breakdown delays. ROI payback in 3 months through reduced emergency repairs.
+
+OPTION 3: Last-Mile AI Clustering (+0.3% efficiency) - 6 weeks implementation
+Route optimization for final delivery segments. Smaller impact but completes your competitive moat.
+
+MY RECOMMENDATION: Execute all three in sequence. Start with Option 1 immediately - it delivers the biggest impact fastest. This progression takes you from top 11% to top 1% of LatAm logistics operators within 3 months. Your clients will notice the difference before your competitors understand what happened.`,
         timestamp: new Date(),
         insights: {
           type: 'analysis',
           data: { currentScore: 96.8, targetScore: 99 },
-          reasoning: 'Benchmarked against 340 logistics operators across 12 LatAm countries'
+          reasoning: 'Benchmarked against 340 logistics operators across 12 LatAm countries, verified through industry performance databases'
         }
       };
     }
@@ -114,7 +172,22 @@ const ChatInterface = () => {
     return {
       id: Date.now().toString(),
       type: 'bot',
-      content: `I understand you're asking about "${userMessage}". As your LatAm logistics intelligence specialist, I can provide expert analysis on:\n\nPredictive Analytics\n• Delivery time forecasts with 94% accuracy\n• Demand prediction up to 30 days ahead\n• Risk assessment for routes and suppliers\n\nCost Intelligence\n• Real-time optimization opportunities\n• Fuel and route cost analysis\n• ROI projections for logistics investments\n\nOperational Excellence\n• Live performance monitoring\n• Competitive benchmarking\n• Strategic recommendations\n\nWhat specific logistics challenge should I analyze for you? I have access to real-time data across all major LatAm trade corridors.`,
+      content: `I'm your LatAm logistics intelligence specialist with real-time access to supply chain data across the region. I deliver instant predictions, optimizations, and strategic insights that keep you ahead of the competition.
+
+MY CORE CAPABILITIES:
+
+PREDICTIVE ANALYTICS - 94% accuracy forecasting
+Delivery time predictions, demand forecasting up to 30 days, comprehensive risk assessment for routes and suppliers.
+
+COST INTELLIGENCE - Real-time optimization
+Live opportunity identification, fuel and route cost analysis, ROI projections for logistics investments.
+
+OPERATIONAL EXCELLENCE - Performance monitoring
+Live performance tracking, competitive benchmarking, strategic recommendations.
+
+WHAT SPECIFIC CHALLENGE SHOULD I SOLVE? I have access to real-time data across all major LatAm trade corridors and can provide actionable recommendations within minutes.
+
+Ask me about predictions, cost optimization, route planning, or performance analysis - I'll give you 3 strategic options with clear recommendations every time.`,
       timestamp: new Date(),
     };
   };
