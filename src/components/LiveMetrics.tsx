@@ -1,162 +1,137 @@
 
-import React, { useState, useEffect } from 'react';
-import { Card } from '@/components/ui/card';
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
-import { 
-  Package, 
-  AlertTriangle, 
-  TrendingUp,
-  Clock,
-  DollarSign
-} from 'lucide-react';
+import { TrendingUp, TrendingDown, DollarSign, Users, Target, Zap } from 'lucide-react';
 
 const LiveMetrics = () => {
-  const [metrics, setMetrics] = useState({
-    activeShipments: 1247,
-    onTimeDelivery: 96.8,
-    costPerKm: 0.84,
-    criticalAlerts: 8,
-    efficiency: 94
-  });
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setMetrics(prev => ({
-        activeShipments: prev.activeShipments + Math.floor(Math.random() * 10) - 5,
-        onTimeDelivery: Math.max(90, Math.min(100, prev.onTimeDelivery + (Math.random() - 0.5) * 0.5)),
-        costPerKm: Math.max(0.7, Math.min(1.2, prev.costPerKm + (Math.random() - 0.5) * 0.02)),
-        criticalAlerts: Math.max(0, prev.criticalAlerts + Math.floor(Math.random() * 3) - 1),
-        efficiency: Math.max(85, Math.min(99, prev.efficiency + (Math.random() - 0.5) * 2))
-      }));
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const recentAlerts = [
-    { id: 1, type: 'warning', message: 'Port congestion in Callao', time: '2m' },
-    { id: 2, type: 'info', message: 'Weather delay in Bogotá', time: '15m' },
-    { id: 3, type: 'critical', message: 'Route optimization ready', time: '23m' },
+  const metrics = [
+    {
+      title: "Campaign ROAS",
+      value: "4.2",
+      change: "+12%",
+      trend: "up",
+      status: "excellent",
+      confidence: 94
+    },
+    {
+      title: "Cost Per Lead",
+      value: "$23.40",
+      change: "-8%", 
+      trend: "down",
+      status: "good",
+      confidence: 87
+    },
+    {
+      title: "Conversion Rate",
+      value: "3.8%",
+      change: "+5%",
+      trend: "up", 
+      status: "good",
+      confidence: 91
+    },
+    {
+      title: "Monthly Spend",
+      value: "$87.2K",
+      change: "+18%",
+      trend: "up",
+      status: "monitor",
+      confidence: 96
+    },
+    {
+      title: "Active Campaigns",
+      value: "23",
+      change: "0",
+      trend: "stable",
+      status: "stable",
+      confidence: 100
+    }
   ];
 
-  const topRoutes = [
-    { route: 'Santos-São Paulo', volume: '2,400', efficiency: 98, status: 'optimal' },
-    { route: 'Callao-Lima', volume: '1,800', efficiency: 85, status: 'congested' },
-    { route: 'Veracruz-CDMX', volume: '2,200', efficiency: 92, status: 'normal' },
-  ];
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'excellent': return 'bg-emerald-100 text-emerald-800 border-emerald-200';
+      case 'good': return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'monitor': return 'bg-amber-100 text-amber-800 border-amber-200';
+      case 'stable': return 'bg-slate-100 text-slate-600 border-slate-200';
+      default: return 'bg-slate-100 text-slate-600 border-slate-200';
+    }
+  };
 
   return (
     <div className="space-y-6">
-      {/* Live KPIs */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-slate-700 uppercase tracking-wide">Live Metrics</h3>
+        <h3 className="text-lg font-semibold text-slate-900">Live Performance</h3>
         
-        <div className="space-y-3">
-          <Card className="p-4 border-0 minimal-shadow bg-white/60">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
-                  <Package className="w-4 h-4 text-blue-600" />
-                </div>
-                <div>
-                  <div className="text-xs text-slate-500 font-medium">Active Shipments</div>
-                  <div className="text-lg font-semibold text-slate-900">{metrics.activeShipments.toLocaleString()}</div>
-                </div>
-              </div>
-              <TrendingUp className="w-4 h-4 text-green-500" />
-            </div>
-          </Card>
-
-          <Card className="p-4 border-0 minimal-shadow bg-white/60">
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-green-50 rounded-lg flex items-center justify-center">
-                    <Clock className="w-4 h-4 text-green-600" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-slate-500 font-medium">On-Time Delivery</div>
-                    <div className="text-lg font-semibold text-slate-900">{metrics.onTimeDelivery.toFixed(1)}%</div>
-                  </div>
-                </div>
-              </div>
-              <Progress value={metrics.onTimeDelivery} className="h-1 bg-slate-100" />
-            </div>
-          </Card>
-
-          <Card className="p-4 border-0 minimal-shadow bg-white/60">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-amber-50 rounded-lg flex items-center justify-center">
-                <DollarSign className="w-4 h-4 text-amber-600" />
-              </div>
-              <div>
-                <div className="text-xs text-slate-500 font-medium">Cost/Km</div>
-                <div className="text-lg font-semibold text-slate-900">${metrics.costPerKm.toFixed(2)}</div>
-              </div>
-            </div>
-          </Card>
-
-          <Card className="p-4 border-0 minimal-shadow bg-white/60">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center">
-                <AlertTriangle className="w-4 h-4 text-red-600" />
-              </div>
-              <div>
-                <div className="text-xs text-slate-500 font-medium">Critical Alerts</div>
-                <div className="text-lg font-semibold text-slate-900">{metrics.criticalAlerts}</div>
-              </div>
-            </div>
-          </Card>
-        </div>
-      </div>
-
-      {/* Recent Alerts */}
-      <div className="space-y-3">
-        <h3 className="text-sm font-medium text-slate-700 uppercase tracking-wide">Recent Activity</h3>
-        <div className="space-y-2">
-          {recentAlerts.map((alert) => (
-            <div key={alert.id} className="p-3 bg-white/40 rounded-xl border border-slate-200/50">
-              <div className="flex items-start space-x-3">
-                <div className={`w-2 h-2 rounded-full mt-2 ${
-                  alert.type === 'critical' ? 'bg-red-500' : 
-                  alert.type === 'warning' ? 'bg-amber-500' : 'bg-blue-500'
-                }`} />
-                <div className="flex-1 min-w-0">
-                  <div className="text-sm text-slate-700">{alert.message}</div>
-                  <div className="text-xs text-slate-500">{alert.time}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Top Routes */}
-      <div className="space-y-3">
-        <h3 className="text-sm font-medium text-slate-700 uppercase tracking-wide">Top Routes</h3>
-        <div className="space-y-2">
-          {topRoutes.map((route, index) => (
-            <div key={index} className="p-3 bg-white/40 rounded-xl border border-slate-200/50">
-              <div className="space-y-2">
+        {metrics.map((metric, index) => (
+          <Card key={index} className="border-0 minimal-shadow">
+            <CardContent className="p-4">
+              <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <div className="text-sm font-medium text-slate-800">{route.route}</div>
-                  <Badge variant={
-                    route.status === 'optimal' ? 'default' : 
-                    route.status === 'congested' ? 'destructive' : 'secondary'
-                  } className="text-xs px-2 py-0.5">
-                    {route.status}
+                  <span className="text-sm text-slate-600">{metric.title}</span>
+                  <Badge className={`text-xs ${getStatusColor(metric.status)}`}>
+                    {metric.confidence}%
                   </Badge>
                 </div>
-                <div className="flex items-center justify-between text-xs text-slate-500">
-                  <span>{route.volume} TEU</span>
-                  <span>{route.efficiency}%</span>
+                
+                <div className="flex items-center justify-between">
+                  <span className="text-xl font-semibold text-slate-900">
+                    {metric.value}
+                  </span>
+                  {metric.trend !== 'stable' && (
+                    <div className={`flex items-center space-x-1 ${
+                      metric.trend === 'up' ? 'text-emerald-600' : 'text-red-500'
+                    }`}>
+                      {metric.trend === 'up' ? 
+                        <TrendingUp className="w-3 h-3" /> : 
+                        <TrendingDown className="w-3 h-3" />
+                      }
+                      <span className="text-xs font-medium">{metric.change}</span>
+                    </div>
+                  )}
                 </div>
-                <Progress value={route.efficiency} className="h-1 bg-slate-100" />
               </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold text-slate-900">Market Intelligence</h3>
+        
+        <Card className="border-0 minimal-shadow">
+          <CardContent className="p-4">
+            <div className="space-y-3">
+              <div className="flex items-center space-x-2">
+                <Zap className="w-4 h-4 text-amber-500" />
+                <span className="text-sm font-medium text-slate-700">Opportunity Alert</span>
+              </div>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Brazil Q2 e-commerce spending up 23%. Recommend 40% budget shift to BR market within 48h.
+              </p>
+              <Badge className="text-xs bg-amber-100 text-amber-800 border-amber-200">
+                High Impact
+              </Badge>
             </div>
-          ))}
-        </div>
+          </CardContent>
+        </Card>
+
+        <Card className="border-0 minimal-shadow">
+          <CardContent className="p-4">
+            <div className="space-y-3">
+              <div className="flex items-center space-x-2">
+                <Target className="w-4 h-4 text-blue-500" />
+                <span className="text-sm font-medium text-slate-700">Trend Analysis</span>
+              </div>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Mobile conversion rates in Mexico up 15% this quarter. Mobile-first campaigns showing 2.3x better performance.
+              </p>
+              <Badge className="text-xs bg-blue-100 text-blue-800 border-blue-200">
+                Trending
+              </Badge>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

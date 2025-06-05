@@ -1,8 +1,8 @@
 
-import { AmschelCore } from '@/components/AmschelCore';
+import LogisticsDashboard from '@/components/LogisticsDashboard';
 
 const Index = () => {
-  return <AmschelCore />;
+  return <LogisticsDashboard />;
 };
 
 export default Index;
