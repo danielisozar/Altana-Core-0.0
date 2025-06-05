@@ -2,7 +2,12 @@
 interface MetricInput {
   roas?: number;
   cac?: number;
+  cpc?: number;
+  ctr?: number;
   spend?: number;
+  impressions?: number;
+  conversions?: number;
+  quarterlyBudget?: number;
   monthlyGoal?: number;
   freeText?: string;
 }
@@ -14,106 +19,139 @@ interface DecisionOutput {
 }
 
 export const analyzeMetrics = (input: MetricInput): DecisionOutput => {
-  const { roas, cac, spend, monthlyGoal, freeText } = input;
+  const { roas, cac, cpc, ctr, spend, impressions, conversions, quarterlyBudget, monthlyGoal, freeText } = input;
 
-  // Rule-based analysis for structured metrics
+  // ROAS-based decisions for marketing teams
   if (roas !== undefined) {
-    if (roas >= 4) {
+    if (roas >= 5) {
       return {
-        decision: "Scale aggressively",
-        justification: "Exceptional ROAS indicates strong product-market fit. Increase budget by 50-100% while maintaining current targeting.",
+        decision: "Scale this campaign aggressively",
+        justification: "Exceptional ROAS indicates strong campaign performance. Request additional budget allocation and expand to similar audience segments immediately.",
         confidence: 'high'
       };
-    } else if (roas >= 2.5) {
+    } else if (roas >= 3) {
       return {
-        decision: "Scale conservatively",
-        justification: "Healthy ROAS with room for optimization. Increase budget by 20-30% and test new audiences.",
+        decision: "Increase budget by 30-50%",
+        justification: "Strong ROAS performance with room for growth. Test expanded audience targeting while maintaining current creative strategy.",
         confidence: 'high'
       };
-    } else if (roas >= 1.5) {
+    } else if (roas >= 2) {
       return {
-        decision: "Optimize before scaling",
-        justification: "ROAS below threshold. Focus on creative refresh, audience refinement, and landing page improvements.",
+        decision: "Optimize creative and targeting",
+        justification: "Moderate ROAS suggests campaign potential. A/B test new ad creative, refine audience segments, and improve landing page experience.",
         confidence: 'high'
       };
     } else {
       return {
-        decision: "Pause and pivot",
-        justification: "Poor ROAS indicates fundamental issues. Reassess product positioning, pricing, or target market.",
+        decision: "Pause and restructure campaign",
+        justification: "Poor ROAS indicates fundamental campaign issues. Reassess audience targeting, messaging alignment, and competitive positioning before continuing spend.",
         confidence: 'high'
       };
     }
   }
 
-  if (cac !== undefined && monthlyGoal !== undefined) {
-    const maxAffordableCac = monthlyGoal * 0.3;
-    if (cac <= maxAffordableCac) {
+  // CTR and CPC analysis for campaign optimization
+  if (ctr !== undefined && cpc !== undefined) {
+    if (ctr >= 2.5 && cpc <= 1.5) {
       return {
-        decision: "Accelerate acquisition",
-        justification: "CAC is within sustainable range. Increase acquisition efforts to capture market share efficiently.",
+        decision: "Maximize reach with current creative",
+        justification: "High engagement at low cost indicates strong creative resonance. Increase daily budgets and expand to lookalike audiences.",
         confidence: 'high'
       };
-    } else {
+    } else if (ctr < 1.0) {
       return {
-        decision: "Reduce acquisition costs",
-        justification: "CAC exceeds sustainable levels. Focus on organic growth, referrals, and conversion optimization.",
+        decision: "Refresh creative assets immediately",
+        justification: "Low click-through rate suggests ad fatigue or poor audience-message fit. Test new creative angles and update targeting parameters.",
         confidence: 'high'
       };
-    }
-  }
-
-  if (spend !== undefined && monthlyGoal !== undefined) {
-    const spendRatio = spend / monthlyGoal;
-    if (spendRatio > 0.4) {
+    } else if (cpc > 3.0) {
       return {
-        decision: "Optimize unit economics",
-        justification: "High spend-to-goal ratio suggests inefficient capital allocation. Review channel performance and reallocate budget.",
+        decision: "Reduce competition through niche targeting",
+        justification: "High cost-per-click indicates oversaturated audience. Narrow targeting to more specific demographics or interest groups.",
         confidence: 'medium'
       };
     }
   }
 
-  // NLP-based analysis for free text
+  // Budget allocation and goal analysis
+  if (spend !== undefined && monthlyGoal !== undefined) {
+    const spendRatio = spend / monthlyGoal;
+    if (spendRatio > 0.5) {
+      return {
+        decision: "Reallocate budget to top performers",
+        justification: "High spend-to-goal ratio requires immediate optimization. Pause underperforming campaigns and concentrate budget on proven channels.",
+        confidence: 'medium'
+      };
+    } else if (spendRatio < 0.2) {
+      return {
+        decision: "Accelerate spend on validated campaigns",
+        justification: "Conservative spend suggests missed opportunity. Increase budgets on campaigns with proven performance metrics.",
+        confidence: 'medium'
+      };
+    }
+  }
+
+  // Conversion rate optimization
+  if (conversions !== undefined && impressions !== undefined) {
+    const conversionRate = (conversions / impressions) * 100;
+    if (conversionRate < 1) {
+      return {
+        decision: "Focus on conversion funnel optimization",
+        justification: "Low conversion rate indicates disconnect between ads and landing experience. Audit user journey and align messaging across touchpoints.",
+        confidence: 'medium'
+      };
+    }
+  }
+
+  // Marketing team specific NLP analysis
   if (freeText) {
     const text = freeText.toLowerCase();
     
-    if (text.includes('scaling') || text.includes('growth')) {
+    if (text.includes('budget cut') || text.includes('reduce spend')) {
       return {
-        decision: "Focus on operational foundations",
-        justification: "Before scaling, ensure systems, processes, and team capacity can handle 3x current volume without quality degradation.",
+        decision: "Consolidate to highest-performing channels",
+        justification: "During budget constraints, concentrate resources on proven channels with best ROI. Pause experimental campaigns and focus on core performance drivers.",
+        confidence: 'high'
+      };
+    }
+    
+    if (text.includes('new product launch') || text.includes('product launch')) {
+      return {
+        decision: "Implement tiered awareness strategy",
+        justification: "New product launches require broad reach followed by targeted conversion campaigns. Start with awareness building, then retarget engaged audiences with conversion-focused creative.",
         confidence: 'medium'
       };
     }
     
-    if (text.includes('struggling') || text.includes('declining') || text.includes('falling')) {
+    if (text.includes('competitors') || text.includes('competition')) {
       return {
-        decision: "Diagnose core issues",
-        justification: "Declining performance requires immediate analysis of customer feedback, competitive positioning, and operational efficiency.",
+        decision: "Differentiate through unique value proposition",
+        justification: "Competitive pressure requires clear differentiation. Focus messaging on unique benefits and consider conquesting strategies for competitor audiences.",
         confidence: 'medium'
       };
     }
     
-    if (text.includes('launch') || text.includes('new product')) {
+    if (text.includes('seasonal') || text.includes('holiday')) {
       return {
-        decision: "Validate before investing",
-        justification: "Test with minimal viable audience first. Confirm demand signals before committing significant resources.",
+        decision: "Prepare scaled seasonal campaigns",
+        justification: "Seasonal opportunities require advance preparation and increased budget allocation. Plan creative variants and audience expansion 4-6 weeks ahead.",
         confidence: 'medium'
       };
     }
     
-    if (text.includes('competition') || text.includes('competitor')) {
+    if (text.includes('underperforming') || text.includes('declining')) {
       return {
-        decision: "Differentiate through execution",
-        justification: "Competition validates market demand. Focus on superior customer experience and operational excellence over feature parity.",
-        confidence: 'medium'
+        decision: "Conduct comprehensive campaign audit",
+        justification: "Performance decline requires systematic analysis of creative fatigue, audience saturation, and competitive landscape changes. Test new approaches immediately.",
+        confidence: 'high'
       };
     }
   }
 
-  // Default response for unclear inputs
+  // Default guidance for marketing teams
   return {
-    decision: "Clarify your strategic objective",
-    justification: "Effective decisions require specific context. Define your primary constraint: growth, profitability, or market position.",
+    decision: "Define your primary campaign objective",
+    justification: "Effective marketing strategy requires clear KPI focus. Specify whether you're optimizing for awareness, engagement, leads, or conversions to get targeted guidance.",
     confidence: 'low'
   };
 };

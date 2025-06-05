@@ -17,21 +17,49 @@ export const AmschelCore: React.FC<AmschelCoreProps> = () => {
     const lowerText = text.toLowerCase();
     const metrics: any = {};
 
-    // Extract ROAS
+    // Extract marketing metrics
     const roasMatch = text.match(/roas[:\s]*(\d+\.?\d*)/i);
     if (roasMatch) metrics.roas = parseFloat(roasMatch[1]);
 
-    // Extract CAC
     const cacMatch = text.match(/cac[:\s]*\$?(\d+\.?\d*)/i);
     if (cacMatch) metrics.cac = parseFloat(cacMatch[1]);
 
-    // Extract spend
-    const spendMatch = text.match(/spend[:\s]*\$?(\d+\.?\d*)/i);
-    if (spendMatch) metrics.spend = parseFloat(spendMatch[1]);
+    const cpcMatch = text.match(/cpc[:\s]*\$?(\d+\.?\d*)/i);
+    if (cpcMatch) metrics.cpc = parseFloat(cpcMatch[1]);
 
-    // Extract monthly goal
-    const goalMatch = text.match(/goal[:\s]*\$?(\d+\.?\d*)/i);
-    if (goalMatch) metrics.monthlyGoal = parseFloat(goalMatch[1]);
+    const ctrMatch = text.match(/ctr[:\s]*(\d+\.?\d*)%?/i);
+    if (ctrMatch) metrics.ctr = parseFloat(ctrMatch[1]);
+
+    const spendMatch = text.match(/spend[:\s]*\$?(\d+\.?\d*k?)/i);
+    if (spendMatch) {
+      let spend = parseFloat(spendMatch[1]);
+      if (spendMatch[1].includes('k')) spend *= 1000;
+      metrics.spend = spend;
+    }
+
+    const impressionsMatch = text.match(/impressions?[:\s]*(\d+\.?\d*k?)/i);
+    if (impressionsMatch) {
+      let impressions = parseFloat(impressionsMatch[1]);
+      if (impressionsMatch[1].includes('k')) impressions *= 1000;
+      metrics.impressions = impressions;
+    }
+
+    const conversionsMatch = text.match(/conversions?[:\s]*(\d+\.?\d*)/i);
+    if (conversionsMatch) metrics.conversions = parseFloat(conversionsMatch[1]);
+
+    const goalMatch = text.match(/(?:goal|target)[:\s]*\$?(\d+\.?\d*k?)/i);
+    if (goalMatch) {
+      let goal = parseFloat(goalMatch[1]);
+      if (goalMatch[1].includes('k')) goal *= 1000;
+      metrics.monthlyGoal = goal;
+    }
+
+    const budgetMatch = text.match(/budget[:\s]*\$?(\d+\.?\d*k?)/i);
+    if (budgetMatch) {
+      let budget = parseFloat(budgetMatch[1]);
+      if (budgetMatch[1].includes('k')) budget *= 1000;
+      metrics.quarterlyBudget = budget;
+    }
 
     // If no structured metrics found, treat as free text
     if (Object.keys(metrics).length === 0) {
@@ -53,7 +81,7 @@ export const AmschelCore: React.FC<AmschelCoreProps> = () => {
       const result = analyzeMetrics(parsedMetrics);
       setResponse(result);
       setIsProcessing(false);
-    }, 800);
+    }, 600);
   };
 
   const handleNewQuery = () => {
@@ -71,7 +99,7 @@ export const AmschelCore: React.FC<AmschelCoreProps> = () => {
                 Amschel Core
               </h1>
               <p className="text-lg text-slate-600 font-light">
-                Operational intelligence for founders
+                Marketing intelligence for teams
               </p>
             </div>
 
@@ -80,7 +108,7 @@ export const AmschelCore: React.FC<AmschelCoreProps> = () => {
                 <Input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="ROAS: 3.2, CAC: $45, spend: $10k, goal: $50k — or describe your situation"
+                  placeholder="ROAS: 3.1, CPC: $2.50, CTR: 1.8% — or describe your campaign situation"
                   className="h-14 text-lg px-6 pr-14 border-0 bg-white shadow-sm ring-1 ring-slate-200 focus:ring-2 focus:ring-slate-900 transition-all duration-200"
                   disabled={isProcessing}
                 />
@@ -104,7 +132,7 @@ export const AmschelCore: React.FC<AmschelCoreProps> = () => {
             </form>
 
             <div className="text-xs text-slate-400 space-y-2">
-              <p>Examples: "ROAS 2.1, need to scale" • "CAC $120, monthly goal $100k" • "Launching new product next month"</p>
+              <p>Examples: "CTR 0.8%, CPC $4.20, need to optimize" • "Campaign ROAS 2.1, budget $50k" • "New product launch next quarter"</p>
             </div>
           </div>
         ) : (
