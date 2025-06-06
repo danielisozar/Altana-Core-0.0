@@ -4,7 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { Send, Bot, User, TrendingUp, AlertTriangle, MapPin, Package, Lightbulb } from 'lucide-react';
+import { Send, Bot, User, TrendingUp, AlertTriangle, Target, DollarSign, Lightbulb } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -23,7 +23,7 @@ const ChatInterface = () => {
     {
       id: '1',
       type: 'bot',
-      content: "I'm your LatAm Logistics Intelligence specialist. I have real-time access to supply chain data across the region and can provide instant predictions, optimizations, and strategic insights. What logistics challenge can I solve for you today?",
+      content: "I'm your LatAm Marketing Intelligence specialist. I have real-time access to campaign data across the region and can provide instant predictions, optimizations, and strategic insights. What marketing challenge can I solve for you today?",
       timestamp: new Date(),
     }
   ]);
@@ -46,125 +46,125 @@ const ChatInterface = () => {
       return {
         id: Date.now().toString(),
         type: 'bot',
-        content: `NEXT 7 DAYS FORECAST - Critical decisions needed now:
+        content: `NEXT 30 DAYS FORECAST - Critical marketing decisions needed now:
 
-OPTION 1: Santos-São Paulo (AVOID) - 18% delays incoming
-Port worker negotiations + 40% cargo spike = guaranteed bottlenecks. My models show 67% probability of 4+ hour delays.
+OPTION 1: Brazil Mobile-First Strategy (EXECUTE IMMEDIATELY) - 67% growth opportunity
+My models show mobile conversion rates spiking 34% in São Paulo market. Competitors haven't caught this trend yet. You have a 2-week window to dominate before saturation.
 
-OPTION 2: Callao-Lima (OPTIMAL CHOICE) - Perfect storm of efficiency
-Zero congestion, stable weather patterns, 23 optimized backup routes ready. This is your golden window.
+OPTION 2: Mexico Video Creative Pivot (HIGH IMPACT) - 89% confidence boost
+Video content performing 156% better than static ads in Mexico City. Creative fatigue hitting static campaigns hard. Shift 70% of creative budget to video production immediately.
 
-OPTION 3: Paita Alternative (SMART HEDGE) - Insurance play
-2,400 TEU capacity available immediately. Costs 8% more but saves you $340K in delay penalties.
+OPTION 3: Argentina Retargeting Expansion (SAFE BET) - Reliable 23% ROAS improvement
+Peso stabilization creating purchase confidence. Retargeting campaigns show 4.2x ROAS vs 2.8x acquisition campaigns. Double retargeting spend for guaranteed returns.
 
-MY RECOMMENDATION: Execute Paita reroute TODAY. Santos will cost you more than the premium you'll pay for Paita. Weather data confirms this is the right move - act within 6 hours for best positioning.`,
+MY RECOMMENDATION: Execute Brazil mobile strategy TODAY. This is your golden window before competitors notice. Mexico video shift should follow within 48 hours. Argentina retargeting is your safety net.`,
         timestamp: new Date(),
         insights: {
           type: 'prediction',
-          data: { confidence: 94, timeframe: '7 days' },
-          reasoning: 'Based on 15 real-time data sources: weather satellites, port APIs, labor negotiations tracker, and 180-day historical analysis'
+          data: { confidence: 94, timeframe: '30 days' },
+          reasoning: 'Based on 15 real-time data sources: social media APIs, conversion tracking, competitor monitoring, and 180-day performance analysis across LatAm markets'
         }
       };
     }
     
-    if (lowerMessage.includes('cost') || lowerMessage.includes('optimization') || lowerMessage.includes('save')) {
+    if (lowerMessage.includes('cost') || lowerMessage.includes('optimization') || lowerMessage.includes('budget') || lowerMessage.includes('roas')) {
       return {
         id: Date.now().toString(),
         type: 'bot',
-        content: `$284K MONTHLY SAVINGS IDENTIFIED - Here's your action plan:
+        content: `$340K QUARTERLY SAVINGS IDENTIFIED - Here's your optimization roadmap:
 
-OPTION 1: Off-Peak Routing (EXECUTE FIRST) - $127K immediate impact
-47 routes running premium hours unnecessarily. Shifting to off-peak saves 23% on fuel costs. Zero service disruption, pure profit.
+OPTION 1: Off-Peak Campaign Scheduling (IMMEDIATE WINS) - $127K savings
+47 campaigns running premium hours unnecessarily. CPCs drop 34% between 10PM-6AM in LatAm markets. Zero performance impact, pure profit optimization.
 
-OPTION 2: Route Consolidation (MEDIUM PRIORITY) - $89K monthly
-23 routes under 60% capacity. My algorithms have mapped the perfect consolidation strategy to hit 87% efficiency while maintaining delivery windows.
+OPTION 2: Audience Consolidation Strategy (MEDIUM PRIORITY) - $148K monthly impact
+23 overlapping audience segments competing against each other, inflating CPCs by 28%. My algorithms mapped perfect consolidation maintaining 94% reach efficiency.
 
-OPTION 3: Rail Integration (LONG-TERM WIN) - $68K ongoing
-São Paulo-Rio cargo shifts to rail at 34% lower cost. Rail reliability actually beats trucks right now: 96% vs 89%.
+OPTION 3: Cross-Platform Budget Reallocation (STRATEGIC MOVE) - $65K ongoing
+Instagram outperforming Facebook by 67% in Brazil, TikTok crushing both in Mexico under-25 demographic. Reallocate 40% budget following performance data.
 
-MY RECOMMENDATION: Start with Option 1 immediately - it's risk-free money. Implement Option 2 within 2 weeks. Option 3 needs 6-week transition but delivers permanent savings. Total implementation timeline: 8 weeks to full optimization.`,
+MY RECOMMENDATION: Start with Option 1 immediately - it's risk-free money. Implement Option 2 within 1 week. Option 3 needs 2-week testing but delivers permanent ROAS improvements. Total timeline: 3 weeks to full optimization.`,
         timestamp: new Date(),
         insights: {
           type: 'optimization',
-          data: { savings: 284000, confidence: 91 },
-          reasoning: 'Analysis of 180 days operational data across 1,247 active routes, verified against industry benchmarks'
+          data: { savings: 340000, confidence: 91 },
+          reasoning: 'Analysis of 90 days campaign data across 847 active campaigns, benchmarked against LatAm industry performance standards'
         }
       };
     }
     
-    if (lowerMessage.includes('alert') || lowerMessage.includes('problem') || lowerMessage.includes('issue')) {
+    if (lowerMessage.includes('alert') || lowerMessage.includes('problem') || lowerMessage.includes('issue') || lowerMessage.includes('crisis')) {
       return {
         id: Date.now().toString(),
         type: 'bot',
-        content: `CRISIS RESPONSE ACTIVATED - 3 critical situations demand immediate action:
+        content: `CRISIS RESPONSE ACTIVATED - 3 critical marketing situations demand immediate action:
 
-OPTION 1: Callao Emergency Reroute (DO THIS NOW) - $2.3M cargo at risk
-Docker strike confirmed 2 hours ago. 67 ships queued, 4-6 hour delays spreading. I've secured 12 Paita slots - claim them in the next hour before competitors move.
+OPTION 1: Facebook Algorithm Change Defense (ACT NOW) - $2.1M campaign exposure
+Algorithm update detected 3 hours ago affecting reach by 43%. I've identified 12 winning creative patterns unaffected by changes. Implement new creative strategy within 6 hours before competitors adapt.
 
-OPTION 2: São Paulo Strike Defense (48H WINDOW) - $890K daily exposure
-89% probability strike proceeds tomorrow. Pre-position inventory at 6 secondary hubs I've mapped. This buys you 72 hours to negotiate or reroute.
+OPTION 2: Competitor Aggressive Bidding (48H RESPONSE WINDOW) - $890K monthly impact
+Major competitor launched 67% budget increase targeting your core audiences. CPCs up 34% and climbing. Shift to longtail keywords and niche audiences I've pre-mapped for you.
 
-OPTION 3: Mexico Fuel Lock (PROFIT OPPORTUNITY) - 7% cost increase coming
-Peso devaluation + refinery maintenance = fuel spike inevitable. Lock contracts now through our preferred suppliers before market catches up.
+OPTION 3: Currency Fluctuation Opportunity (PROFIT WINDOW) - Brazilian Real undervalued
+Real devaluation + stable local purchasing power = arbitrage opportunity. Lock USD-based ad spend now for 15% effective cost reduction over next 90 days.
 
-MY RECOMMENDATION: Execute ALL three simultaneously. Callao reroute is non-negotiable. São Paulo prep takes 4 hours. Mexico fuel locks need 24 hours. This aggressive response limits total impact to under 2% of operations while competitors face 15-20% disruption.`,
+MY RECOMMENDATION: Execute ALL three simultaneously. Facebook creative refresh is non-negotiable. Competitor defense takes 4 hours setup. Currency lock needs 24 hours execution. This aggressive response limits campaign impact to under 5% while competitors face 20-30% performance drops.`,
         timestamp: new Date(),
         insights: {
           type: 'alert',
           data: { criticalAlerts: 2, warnings: 1 },
-          reasoning: 'Real-time monitoring of 847 data points: port sensors, labor negotiations, currency markets, weather systems'
+          reasoning: 'Real-time monitoring of 1,200+ data points: platform APIs, competitor tracking, currency markets, algorithm change detection systems'
         }
       };
     }
     
-    if (lowerMessage.includes('route') || lowerMessage.includes('path') || lowerMessage.includes('delivery')) {
+    if (lowerMessage.includes('campaign') || lowerMessage.includes('creative') || lowerMessage.includes('audience')) {
       return {
         id: Date.now().toString(),
         type: 'bot',
-        content: `ROUTE OPTIMIZATION COMPLETE - 3 strategic options analyzed:
+        content: `CAMPAIGN OPTIMIZATION COMPLETE - 3 strategic directions analyzed:
 
-OPTION 1: Speed Priority (4.2h) - Use for premium clients only
-Santos → BR-116 → São Paulo. Fastest route but 15% fuel premium. Reserve this for high-margin, time-critical shipments.
+OPTION 1: Creative Refresh Strategy (URGENT PRIORITY) - Address 67% performance decline
+Current creative showing fatigue across all LatAm markets. CTR dropped 34% in 2 weeks. I've identified 8 winning creative angles based on top-performing competitor analysis.
 
-OPTION 2: Cost Priority (4.8h) - Maximum efficiency play  
-Santos → SP-160 → BR-381 → São Paulo. 23% fuel savings, zero tolls, predictable timing. Perfect for bulk standard deliveries.
+OPTION 2: Audience Expansion Play (CALCULATED GROWTH) - 89% lookalike accuracy
+Your best-converting customers cluster in 3 distinct behavioral patterns. Expand to similar audiences in Colombia and Chile for 156% scale opportunity with maintained ROAS.
 
-OPTION 3: Hybrid Smart Route (4.5h) - THE WINNER
-Dynamic routing avoiding BR-116 accident at km 45. Balances speed and cost while adapting to real-time conditions. This is your new standard.
+OPTION 3: Retargeting Funnel Optimization (GUARANTEED WINS) - 4.7x ROAS potential
+68% of website visitors never see retargeting ads due to inadequate funnel setup. Implement 7-stage retargeting sequence for automatic revenue increase.
 
-MY RECOMMENDATION: Implement Option 3 as default for all operations. I'm already routing your next 12 shipments this way, saving $2,340 today. Options 1 and 2 become tactical choices for specific client needs. This strategy positions you 15% ahead of competition in both cost and reliability.`,
+MY RECOMMENDATION: Option 1 is critical - execute today to stop bleeding. Option 2 should follow within 1 week for growth. Option 3 is your foundation for sustainable performance. This sequence transforms you from reactive to predictive marketing.`,
         timestamp: new Date(),
         insights: {
           type: 'analysis',
-          data: { routeOptions: 3, timeSaved: '1.5h' },
-          reasoning: 'Live analysis from 340 traffic sensors, weather APIs, road condition monitors, and fuel price tracking'
+          data: { campaignHealth: 67, scalePotential: '156%' },
+          reasoning: 'Deep analysis of 340 campaign metrics, creative performance tracking, audience behavior patterns across 12 LatAm markets'
         }
       };
     }
     
-    if (lowerMessage.includes('performance') || lowerMessage.includes('kpi') || lowerMessage.includes('metrics')) {
+    if (lowerMessage.includes('performance') || lowerMessage.includes('kpi') || lowerMessage.includes('metrics') || lowerMessage.includes('results')) {
       return {
         id: Date.now().toString(),
         type: 'bot',
-        content: `PERFORMANCE ANALYSIS - You're outperforming 89% of LatAm operators. Here's how to dominate the top 1%:
+        content: `PERFORMANCE ANALYSIS - You're outperforming 82% of LatAm marketing teams. Here's how to reach top 5%:
 
-CURRENT STATUS: 96.8% on-time delivery (Industry: 89%) | $0.84/km cost (15% below average) | 87% capacity utilization
+CURRENT STATUS: 3.4% CTR (Industry: 2.1%) | $2.80 CPC (18% below average) | 4.2 ROAS (Target: 5.0+)
 
-OPTION 1: Micro-Scheduling Implementation (+2.1% performance) - 2 weeks to deploy
-Predictive scheduling adjustments based on traffic patterns, weather, and historical data. Guaranteed improvement to 99% on-time delivery.
+OPTION 1: Predictive Budget Allocation (+0.8 ROAS points) - 2 weeks to deploy
+AI-driven budget shifts based on real-time performance patterns. Automatically move spend from declining to ascending campaigns. Guaranteed ROAS improvement to 5.0+.
 
-OPTION 2: Predictive Maintenance Program (+1.8% uptime) - 4 weeks full rollout
-AI-driven maintenance alerts prevent 92% of breakdown delays. ROI payback in 3 months through reduced emergency repairs.
+OPTION 2: Advanced Attribution Modeling (+0.4 ROAS visibility) - 1 month rollout
+Multi-touch attribution reveals true campaign impact. Stop over-crediting last-click, start optimizing full customer journey. 23% of your budget is misallocated.
 
-OPTION 3: Last-Mile AI Clustering (+0.3% efficiency) - 6 weeks implementation
-Route optimization for final delivery segments. Smaller impact but completes your competitive moat.
+OPTION 3: Competitive Intelligence Integration (+0.3 ROAS edge) - 6 weeks implementation
+Real-time competitor monitoring and automated counter-strategies. React to competitor moves within hours, not weeks.
 
-MY RECOMMENDATION: Execute all three in sequence. Start with Option 1 immediately - it delivers the biggest impact fastest. This progression takes you from top 11% to top 1% of LatAm logistics operators within 3 months. Your clients will notice the difference before your competitors understand what happened.`,
+MY RECOMMENDATION: Execute all three in sequence. Start with Option 1 immediately - biggest impact, fastest results. This progression takes you from top 18% to top 5% of LatAm marketing performance within 2 months. Your competition won't know what hit them.`,
         timestamp: new Date(),
         insights: {
           type: 'analysis',
-          data: { currentScore: 96.8, targetScore: 99 },
-          reasoning: 'Benchmarked against 340 logistics operators across 12 LatAm countries, verified through industry performance databases'
+          data: { currentROAS: 4.2, targetROAS: 5.0 },
+          reasoning: 'Benchmarked against 890 marketing teams across 12 LatAm countries, verified through industry performance databases and platform APIs'
         }
       };
     }
@@ -172,22 +172,22 @@ MY RECOMMENDATION: Execute all three in sequence. Start with Option 1 immediatel
     return {
       id: Date.now().toString(),
       type: 'bot',
-      content: `I'm your LatAm logistics intelligence specialist with real-time access to supply chain data across the region. I deliver instant predictions, optimizations, and strategic insights that keep you ahead of the competition.
+      content: `I'm your LatAm marketing intelligence specialist with real-time access to campaign data across the region. I deliver instant predictions, optimizations, and strategic insights that keep your campaigns ahead of the competition.
 
 MY CORE CAPABILITIES:
 
 PREDICTIVE ANALYTICS - 94% accuracy forecasting
-Delivery time predictions, demand forecasting up to 30 days, comprehensive risk assessment for routes and suppliers.
+Campaign performance predictions, audience behavior forecasting up to 30 days, comprehensive trend analysis across LatAm markets.
 
-COST INTELLIGENCE - Real-time optimization
-Live opportunity identification, fuel and route cost analysis, ROI projections for logistics investments.
+BUDGET INTELLIGENCE - Real-time optimization
+Live opportunity identification, ROAS optimization, competitive spending analysis, currency arbitrage opportunities.
 
-OPERATIONAL EXCELLENCE - Performance monitoring
-Live performance tracking, competitive benchmarking, strategic recommendations.
+CREATIVE & AUDIENCE INSIGHTS - Performance monitoring
+Real-time creative fatigue detection, audience saturation alerts, competitor creative analysis, viral content pattern recognition.
 
-WHAT SPECIFIC CHALLENGE SHOULD I SOLVE? I have access to real-time data across all major LatAm trade corridors and can provide actionable recommendations within minutes.
+WHAT SPECIFIC MARKETING CHALLENGE SHOULD I SOLVE? I have access to real-time data across all major LatAm advertising platforms and can provide actionable recommendations within minutes.
 
-Ask me about predictions, cost optimization, route planning, or performance analysis - I'll give you 3 strategic options with clear recommendations every time.`,
+Ask me about campaign predictions, budget optimization, creative strategy, audience expansion, or performance analysis - I'll give you 3 strategic options with clear recommendations every time.`,
       timestamp: new Date(),
     };
   };
@@ -221,10 +221,10 @@ Ask me about predictions, cost optimization, route planning, or performance anal
   };
 
   const suggestedQuestions = [
-    "Predict delivery delays for next week",
-    "Show me cost optimization opportunities", 
-    "What alerts need attention now?",
-    "Optimize my Brazil routes"
+    "Predict campaign performance for next month",
+    "Show me budget optimization opportunities", 
+    "What marketing alerts need attention?",
+    "Optimize my Brazil campaign strategy"
   ];
 
   return (
@@ -263,8 +263,8 @@ Ask me about predictions, cost optimization, route planning, or performance anal
                       <Badge variant="secondary" className="text-xs bg-white/10 text-white border-white/20">
                         {message.insights.type === 'prediction' && <TrendingUp className="w-3 h-3 mr-1" />}
                         {message.insights.type === 'alert' && <AlertTriangle className="w-3 h-3 mr-1" />}
-                        {message.insights.type === 'optimization' && <Package className="w-3 h-3 mr-1" />}
-                        {message.insights.type === 'analysis' && <MapPin className="w-3 h-3 mr-1" />}
+                        {message.insights.type === 'optimization' && <DollarSign className="w-3 h-3 mr-1" />}
+                        {message.insights.type === 'analysis' && <Target className="w-3 h-3 mr-1" />}
                         {message.insights.type}
                       </Badge>
                       {message.insights.data?.confidence && (
@@ -339,7 +339,7 @@ Ask me about predictions, cost optimization, route planning, or performance anal
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder="Ask about predictions, costs, routes..."
+              placeholder="Ask about campaigns, ROAS, budgets, audiences..."
               className="flex-1 min-h-[50px] max-h-[120px] resize-none border-slate-200 bg-white/80 text-slate-700 placeholder:text-slate-400"
               disabled={isTyping}
             />
