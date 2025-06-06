@@ -1,5 +1,4 @@
-
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -29,15 +28,6 @@ const ChatInterface = () => {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
 
   const generateBotResponse = (userMessage: string): Message => {
     const lowerMessage = userMessage.toLowerCase();
@@ -229,7 +219,7 @@ Ask me about campaign predictions, budget optimization, creative strategy, audie
 
   return (
     <div className="flex flex-col h-full bg-gradient-to-b from-white to-slate-50/50">
-      {/* Chat Messages */}
+      {/* Chat Messages - Removed auto-scrolling */}
       <div className="flex-1 overflow-y-auto p-6 space-y-6 pb-32">
         {messages.map((message) => (
           <div
@@ -307,7 +297,6 @@ Ask me about campaign predictions, budget optimization, creative strategy, audie
             </div>
           </div>
         )}
-        <div ref={messagesEndRef} />
       </div>
 
       {/* Fixed Input Area */}
