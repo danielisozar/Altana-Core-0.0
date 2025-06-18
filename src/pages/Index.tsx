@@ -1,8 +1,8 @@
 
-import LogisticsDashboard from '@/components/LogisticsDashboard';
+import CIS1Dashboard from '@/components/LogisticsDashboard';
 
 const Index = () => {
-  return <LogisticsDashboard />;
+  return <CIS1Dashboard />;
 };
 
 export default Index;

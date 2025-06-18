@@ -13,77 +13,69 @@ import {
   SidebarTrigger,
 } from '@/components/ui/sidebar';
 import { 
-  Activity, 
-  TrendingUp, 
-  DollarSign, 
-  Users, 
-  Target, 
-  BarChart3,
-  PieChart,
-  LineChart,
-  Zap
+  Bot, 
+  Home, 
+  History, 
+  Building2, 
+  Settings, 
+  FileText
 } from 'lucide-react';
-import LiveMetrics from './LiveMetrics';
-import CampaignDashboard from './CampaignDashboard';
-import ROASDashboard from './ROASDashboard';
-import AudienceDashboard from './AudienceDashboard';
+import DecisionSession from './DecisionSession';
+import DecisionHistory from './DecisionHistory';
+import BusinessProfile from './BusinessProfile';
+import AppSettings from './AppSettings';
 
 const AppSidebar = () => {
-  const [activeView, setActiveView] = useState('metrics');
+  const [activeView, setActiveView] = useState('home');
 
   const menuItems = [
     {
-      id: 'metrics',
-      title: 'Live Metrics',
-      icon: Activity,
-      component: LiveMetrics
+      id: 'home',
+      title: 'New Decision',
+      icon: Home,
+      component: DecisionSession
     },
     {
-      id: 'campaigns',
-      title: 'Campaign Performance',
-      icon: BarChart3,
-      component: CampaignDashboard
+      id: 'history',
+      title: 'History',
+      icon: History,
+      component: DecisionHistory
     },
     {
-      id: 'roas',
-      title: 'ROAS Analytics',
-      icon: DollarSign,
-      component: ROASDashboard
+      id: 'business',
+      title: 'My Business',
+      icon: Building2,
+      component: BusinessProfile
     },
     {
-      id: 'audience',
-      title: 'Audience Insights',
-      icon: Users,
-      component: AudienceDashboard
+      id: 'settings',
+      title: 'Settings',
+      icon: Settings,
+      component: AppSettings
     }
   ];
 
-  const ActiveComponent = menuItems.find(item => item.id === activeView)?.component || LiveMetrics;
+  const ActiveComponent = menuItems.find(item => item.id === activeView)?.component || DecisionSession;
 
   return (
     <Sidebar className="w-80">
       <SidebarHeader className="p-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <Activity className="w-4 h-4 text-white" />
+            <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
+              <Bot className="w-4 h-4 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-semibold text-slate-900">Analytics</h1>
-              <p className="text-xs text-slate-500">LatAm Marketing Intelligence</p>
+              <h1 className="text-xl font-semibold text-slate-900">CIS-1</h1>
+              <p className="text-xs text-slate-500">Business Decision Copilot</p>
             </div>
           </div>
           <SidebarTrigger />
-        </div>
-        <div className="flex items-center space-x-2 mt-3">
-          <div className="w-2 h-2 bg-green-500 rounded-full pulse-dot"></div>
-          <span className="text-xs text-slate-600 font-medium">Live Data</span>
         </div>
       </SidebarHeader>
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Marketing Intelligence</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
