@@ -2,7 +2,7 @@
 import React from 'react';
 import { Bot, Activity } from 'lucide-react';
 import { SidebarProvider } from '@/components/ui/sidebar';
-import AppSidebar from '@/components/AppSidebar';
+import AppSidebar from './AppSidebar';
 import ChatInterface from './ChatInterface';
 
 const CIS1Dashboard = () => {
